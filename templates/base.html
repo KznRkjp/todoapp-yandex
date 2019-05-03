@@ -1,0 +1,63 @@
+{% load custom_tags %}
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+
+    {% block extra_head %}
+    {% endblock %}
+
+
+  </head>
+  <body>
+    <div class="container ">
+      <div class="row">
+
+        <div class="side_bar col">
+          {% block side_bar %}
+            {% if user.is_authenticated %}
+              <p>{{ user.first_name }}</p>
+
+              <nav class="nav flex-column">
+                <a class="nav-link" href="{% url "edit" %}">Профиль</a>
+                <a class="nav-link" href="{% url "tasks:create" %}">Добавить задачу</a>
+                <a class="nav-link" href="{% url "tasks:list" %}">Задачи <span class="badge badge-danger">{%not_completed user.tasks.all%}</span>/<span class="badge badge-warning">{{user.tasks.count}}</span></a>
+                <a class="nav-link" href="{% url "tasks:import" %}">Импорт</a>
+                <a class="nav-link" href="{% url "tasks:index" %}">Подсчет тэгов и приоритетов всех пользователей</a>
+                <a class="nav-link" href="{% url "tasks:api_error" %}">Получить ошибку</a>
+                <a class="nav-link" href="{% url "logout" %}">Выйти</a>
+              </nav>
+
+            {% endif %}
+          {% endblock %}
+        </div>
+
+
+        <div class="main_content col-8">
+    {% if messages %}
+    <div class="row">
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="alert alert-{{ message.tags }} alert-dismissable">
+            {{ message }}
+            <a href="#" class="close" data-dismiss="alert">x</a>
+          </li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% block main_content %}
+    {% endblock %}
+</div>
+
+      </div>
+    </div>
+  </body>
+</html>

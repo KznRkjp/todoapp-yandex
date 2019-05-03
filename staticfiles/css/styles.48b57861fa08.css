@@ -1,0 +1,81 @@
+
+.container {
+  margin: 0 auto;
+  min-width: 500px;
+  width: 45%;
+  text-align: left;
+  color: #3b3b3b;
+  font-weight: bold;
+}
+
+
+form.tasks-create > input[type="text"] {
+  outline: 0;
+  width: 55%;
+  height: 32px;
+  border: none;
+  font-size: 18px;
+  font-weight: normal;
+  padding-left: 10px;
+}
+
+.add {
+  outline: 0;
+  width: 34%;
+  height: 36px;
+  color: #fff;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  background-color: #3b3b3b;
+}
+
+
+ul {
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+hr {
+  border-bottom: 0;
+  margin: 15px 0;
+}
+
+input[type="checkbox"] { width: 30px; }
+
+.remove {
+  float: right;
+  cursor: pointer;
+}
+
+.completed { text-decoration: line-through; }
+
+
+h1 { color: #111; font-family: 'Open Sans Condensed', sans-serif; font-size: 20px; font-weight: 700; line-height: 28px; margin: 24 0 12px; padding: 0 30px; text-align: center; text-transform: uppercase; }
+
+
+/*li.menu  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  background-color: #f1f1f1;
+  /*height: 100%; /* Full height */
+  /*position: fixed; /* Make it stick, even on scroll */
+  /*overflow: auto; /* Enable scrolling if the sidenav has too much content */
+/*}
+/*
+li.menu  {
+  display: block;
+  color: #003;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+/*li.menu a:hover {
+  background-color: #555;
+  color: white;
+}
+*/

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Экспорт{% endblock %}
+
+{% block main_content %}
+  <h1>Импорт задач</h1>
+  <p>Введите ID борда</p>
+  <form action="{% url "tasks:import" %}" method="post">
+    <label for="team_name">Введите ID борда: </label>
+    <input id="board_id" type="text" name="board_id" value="ID">
+    {% csrf_token %}
+    <input type="submit" value="OK">
+  </form>
+
+{% endblock %}
